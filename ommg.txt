@@ -1,0 +1,208 @@
+1)a)
+stName = input("Enter the name of the student : ")
+stUSN = input("Enter the USN of the student : ")
+stMarks1 = int(input("Enter marks in Subject 1 out of 100 : "))
+stMarks2 = int(input("Enter marks in Subject 2 out of 100 : "))
+stMarks3 = int(input("Enter marks in Subject 3 out of 100 : "))
+print("Student Details\n=========================")
+print('%14s'%('Name :'),stName)
+print('%14s'%('USN :'),stUSN)
+print('%14s'%('Marks1 :'),stMarks1)
+print('%14s'%('Marks1 :'),stMarks2)
+print('%14s'%('Marks1 :'),stMarks3)
+print('%14s'%('Total :'),stMarks1+stMarks2+stMarks3)
+print('%14s'%('Percent :'),'%.2f'%((stMarks1+stMarks2+stMarks3)/300*100),'%')
+print("=========================")
+
+b)
+from datetime import date
+c_year=date.today().year
+name=input('Enter the name of the person:')
+dob=int(input("Enter the year of birth:"))
+age=c_year-dob
+if age>60:
+    print('The persons named',name,' who is',age,'years old is a senior citizen ')
+else:
+ print('The persons named',name,'who is',age,'years old is not a senior citizen ')
+
+2)a)
+num=int(input("Enter a number to print fibonacci series upto that: "))
+f0=0
+f1=1
+f2=0
+count=0
+while count<num:
+ count+=1
+ print(f2,end=' ')
+ f0=f1
+ f1=f2
+ f2=f0+f1
+
+b)
+num=int(input("Enter a number to print fibonacci series upto that: "))
+f0=0
+f1=1
+f2=0
+count=0
+while count<num:
+ count+=1
+ print(f2,end=' ')
+ f0=f1
+ f1=f2
+ f2=f0+f1
+
+3)
+import statistics
+N = int(input("Enter the number of elements:"))
+numbers=[]
+for i in range(N):
+    num = float(input(f"Enter number {i+1}:"))
+    numbers.append(num)
+mean = statistis.mean(numbers)
+variance = statistics.variance(numbers)
+std_deviation = statistics.stdev(numbers)
+print(f"Mean: {mean}")
+pirnt(f"Variance:{variance}")
+print(f"Standard Deviation: {std_deviation}")
+
+4)
+num=input("Enter a number:")
+print("the number is:",num)
+uniq=set(num)
+for e in uniq:
+     print(e,"occurs",num.count(e),'times')
+
+5)
+import sys
+import string
+import os.path
+fname = input("Enter the filename : ") #sample file text.txt also provided
+if not os.path.isfile(fname):
+    print("File", fname, "doesn’t exists")
+    sys.exit(0)
+infile = open(fname, "r")
+filecontents = ""
+for line in infile:
+     for ch in line:
+         if ch not in string.punctuation:
+             filecontents = filecontents + ch
+         else:
+             filecontents = filecontents + ' ' 
+wordFreq = {}
+wordList = filecontents.split()
+#Calculate word Frequency
+for word in wordList:
+    if word not in wordFreq.keys():
+        wordFreq[word] = 1
+   else:
+        wordFreq[word] += 1
+sortedWordFreq = sorted(wordFreq.items(), key=lambda x:x[1], reverse=True )
+print("\n===================================================")
+print("10 most frequently appearing words with their count")
+print("===================================================")
+for i in range(10):
+ print(sortedWordFreq[i][0], "occurs", sortedWordFreq[i][1], "times")
+
+6)
+f=open(r'C:\sample folder\text1.txt','r')
+line_list=f.readlines()
+new_line_list=[]
+for i in line_list:
+    new_line_list.append(i,strip())
+new_line_list.sort()
+print(new_line_list)
+new_f=open(r'C:\sample folder\text2.txt','w')
+for i in new_line_list:
+    new_f.write(i+'\n')
+new_f.close()
+f.close()
+
+7)
+import shutil,zipfile
+try:
+    f=input("Enter the folder to backup:")
+    shutil.copytree(f,r'C:\F2')
+    shutil.make_archive('f11.zip','zip,r'C:\F2')
+except:
+    print('An error occurred,try again.')
+
+8)
+import sys
+def DivExp(a,b):
+ assert a>0, "a should be greater than 0"
+ try:
+ c = a/b
+ except ZeroDivisionError:
+ print("Value of b cannot be zero")
+ sys.exit(0)
+ else:
+ return c
+val1 = int(input("Enter a value for a : "))
+val2 = int(input("Enter a value for b : "))
+val3 = DivExp(val1, val2)
+print(val1, "/", val2, "=", val3)
+
+9)
+class Complex:
+    def__init__(self,realp=0,imgp=0);
+       self.realp=realp
+       self.imgp=imgp
+    def read_info(self):
+        self.realp=int(input("Enter the values of real part of Complex Number:"))
+        self.imgp=int(input("Enter the values of img part of Complex Number:"))
+    def display(self):
+        print('(',self.realp,')','+1','(',self.imgp,')',sep='')
+    def addcomplex(self,other):
+        c_obj=Complex()
+        c_obj_realp=self.realp+other.realp
+        c_obj_imgp=self.imgp+other.imgp
+        return c_obj
+c1=Complex()
+c1.read_info()
+c2=Complex()
+c2.read_info()
+c1.display()
+c2.display()
+c3=c1.addcomplex(c2)
+c3.display()
+n=int(input("Enter the nnumber of complex numbers you want to add:"))
+if n>=2:
+    comp_list=[]
+    for i in range(n):
+        obj=Complex()
+        print("Complex Object",i+1)
+        obj.read_info()
+        comp_;ist.append(obj)
+        sum_obj=complex()
+    for i in comp_list:
+        sum_obj=sum_obj.addcomplex(i)
+        sum_obj.display()
+else:
+    print("try again")
+
+10)
+class Student:
+     def__init__(self,name='',usn+'',score=[]):
+        self.name=name
+        self.usn=usn
+        self.score=score
+     def getmarks(self):
+        self.name=input("Enter the name of the student:")
+        self.usn=input("Enter the usn of the student:")
+        self.score.append(int(input("Enter marks of subject 1 out of 100:")))
+        self.score.append(int(input("Enter marks of subject 2 out of 100:")))
+        self.score.append(int(input("Enter marks of subject 3 out of 100:")))
+        self.score.append(self.append(self.score[0]+self.score[1]+self.score[2])
+
+def display(self):
+    s='=*98
+    print(s)
+    print('SCORE CARD DETAILS'.center(98))
+    print(s)
+    print('%13s'%('NAME'),'%13s'%('USN'),'%13s'%('MARKS1'),'%13s'%('MARKS2'),'%13s'%('MARKS3'),'%13s'%('TOTAL'),'%13s'%('PERIMETER'))
+    print(s)
+    print('%13s'%(self.name),'%13s'%(self.usn),'%13s'%(self.score[0]),'%13s'%(self.score[1]),'%13s'%(self.score[2]),'13s'%(self.score[3]))
+    print(s)
+s1=Student()
+s1.getmarks()
+s1.display()
